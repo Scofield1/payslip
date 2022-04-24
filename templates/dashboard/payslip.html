@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PaySlip Page</title>
+    <style>
+        .red{
+           color:red;
+           font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1 class="red">Lady K Restaurant PaySlip</h1>
+<hr>
+<h1>Name: <span>{{ model.first_name }}</span> <span>{{ model.last_name }}</span></h1>
+<h1>Position: {{ model.grade_status.position }}</h1>
+<h1>Email: {{ model.email }}</h1>
+<h1>Hours Worked: {{ model.hours }}</h1>
+<h1>Salary: {{ model.grade_status.salary }}</h1>
+<hr>
+<h1>Gross Salary: {{ model.gross_salary  }}</h1>
+</body>
+</html>
+

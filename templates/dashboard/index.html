@@ -1,0 +1,31 @@
+{% extends 'partial/base.html' %}
+{% block title %} Home Page {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <div class="p-4 bg-light">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Position</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Pay Slip</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for model in models %}
+                    <tr>
+                        <th>{{ model.grade_status.position }}</th>
+                        <td><span>{{model.first_name}}</span> <span>{{model.last_name}}</span></td>
+                        <td><a href="{% url 'payslip' model.id %}" class="btn-sm btn-primary text-decoration-none">View PaySlip</a> </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

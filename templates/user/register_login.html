@@ -1,0 +1,53 @@
+{% extends 'partial/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} SignUp and Login Page {% endblock title %}
+
+{% block content %}
+
+{% if page == 'register' %}
+<section class="container">
+    <div class="col-md-6 offset-md-3 shadow p-5 mt-5 bg-light">
+        <div class="text-center">
+            <h1>SIGNUP FORM</h1>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <form method="POST" action="">{% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Submit" class="btn btn-success mt-4">
+            <a href="login" class="btn btn-primary mt-4 ms-5">Log in</a>
+        </form>
+    </div>
+</section>
+{% else %}
+<section class="container">
+    <div class="col-md-6 offset-md-3 shadow p-5 mt-5 bg-light">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="text-center">
+            <h1>SIGN IN</h1>
+        </div>
+        <p class="my-3 text-center">If you don't have an account <a href="{% url 'register' %}">Sign up</a></p>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <p>Username:</p>
+            <input type="text" name="username" class="form-control">
+            <p>Password</p>
+            <input type="password" name="password1" class="form-control">
+            <input type="submit" value="Log in" class="btn btn-success btn-block mt-4">
+        </form>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}
